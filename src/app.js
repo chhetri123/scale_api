@@ -21,6 +21,9 @@ app.use(limiter);
 
 // Routes
 app.use("/api/users", userRoutes);
+app.get("/health", (req, res) => {
+  res.status(200).send("OK");
+});
 
 // Error handling middleware
 app.use((err, req, res, next) => {
