@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: scaleapi
+  name: scaleapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: scaleapi
+  template:
+    metadata:
+      labels:
+        app: scaleapi
+    spec:
+      containers:
+        - image: 020493826288.dkr.ecr.ap-south-1.amazonaws.com/scaleapi
+          name: scaleapi
+          ports:
+            - containerPort: 8080
+          env:
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: aws-secrets
+                  key: AWS_ACCESS_KEY_ID
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: aws-secrets
+                  key: AWS_SECRET_ACCESS_KEY
+            - name: AWS_REGION
+              valueFrom:
+                secretKeyRef:
+                  name: aws-secrets
+                  key: AWS_REGION
+            - name: AWS_S3_BUCKET
+              valueFrom:
+                secretKeyRef:
+                  name: aws-secrets
+                  key: AWS_S3_BUCKET
+            - name: MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: api-secrets
+                  key: MONGODB_URI
+            - name: PORT
+              value: "8080"
