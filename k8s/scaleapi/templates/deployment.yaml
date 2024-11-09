@@ -15,7 +15,7 @@ spec:
         app: scaleapi
     spec:
       containers:
-        - image: 020493826288.dkr.ecr.ap-south-1.amazonaws.com/scaleapi
+        - image: 020493826288.dkr.ecr.ap-south-1.amazonaws.com/scaleapi:latest
           name: scaleapi
           ports:
             - containerPort: 8080
