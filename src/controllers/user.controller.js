@@ -40,6 +40,14 @@ class UserController {
       return createResponse(res, 500, "File upload failed");
     }
   }
+  async getUsers(req, res) {
+    try {
+      const users = await userService.getUsers();
+      return createResponse(res, 200, "Users fetched successfully", users);
+    } catch (error) {
+      logger.error("Controller: Error fetching users:", error);
+    }
+  }
 
   async getUser(req, res) {
     try {

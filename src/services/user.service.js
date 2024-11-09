@@ -11,6 +11,15 @@ class UserService {
       throw error;
     }
   }
+  async getUsers() {
+    try {
+      const users = await User.find();
+      return users;
+    } catch (error) {
+      logger.error("Service: Error fetching users:", error);
+      throw error;
+    }
+  }
 
   async uploadUserFile(file, userId) {
     try {
