@@ -4,6 +4,7 @@ A scalable REST API service built with Node.js and deployed on AWS EKS, featurin
 
 ## Project Structure
 
+```
 │
 ├── k8s/
 │ ├── scaleapi/
@@ -13,6 +14,8 @@ A scalable REST API service built with Node.js and deployed on AWS EKS, featurin
 │ │ │ └── ingress.yaml
 │ │ └── values.yaml
 │ └── ...
+
+```
 
 ## Installation Guide
 
